@@ -6,7 +6,7 @@ Email: yulvchi@qq.com
 Date: 2022-02-11 14:55:18
 Motto: Entities should not be multiplied unnecessarily.
 LastEditors: Shuangchi He
-LastEditTime: 2022-02-11 18:09:09
+LastEditTime: 2022-02-11 22:42:23
 FilePath: /Correlation_and_Agreement_Analysis/Python/Correlation_Agreement.py
 Description: Statistical Analysis for Pearson Correlation and Bland-Altman Agreement
 '''
@@ -71,7 +71,8 @@ def plot_Bland_Altman_Agreement(X, Y, linefit_TF=False,
     data_mean = np.array((X + Y) / 2)  # Mean of two measurements.
     data_diff = np.array(X - Y)  # Difference between two measurements.
     mean_diff = np.mean(data_diff)  # Mean of difference between two measurements.
-    std_diff = np.std(data_diff)  # Std deviation of difference between two measurements.
+    std_diff = np.std(data_diff, ddof=1)  # Std deviation of difference between two measurements.
+    # Python np.std divides by N by default. Set ddof=1 to divide by N-1.
 
     plt.gcf().set_facecolor(np.ones(3) * 240 / 255)
     plt.scatter(data_mean, data_diff, s=10, facecolors='none', edgecolors='r',
@@ -114,11 +115,11 @@ if __name__ == "__main__":
     parse.add_argument('--M_predict', nargs='+', type=float,
                        default=[0.125, 0.95, 0.55, 0.60, 0.78, 0.46, 0.88, 0.50, 0.93,
                                 0.35, 0.975, 0.725, 0.285, 0.166, 0.666, 0.888, 0.233],
-                       help="Data 1")
+                       help="Data 1, Measurement_predict")
     parse.add_argument('--M_GT', nargs='+', type=float,
                        default=[0.127, 0.97, 0.53, 0.57, 0.72, 0.49, 0.91, 0.52, 0.90,
                                 0.37, 0.982, 0.718, 0.277, 0.175, 0.666, 0.88, 0.2333],
-                       help="Data 2")
+                       help="Data 2, Measurement_GT")
 
     parse.add_argument('--PC_linefit_TF', type=bool, default=True)
     parse.add_argument('--hist_TF', type=bool, default=False)
@@ -136,6 +137,8 @@ if __name__ == "__main__":
                        default='{}/Measurement_Bland-Altman_Agreement.png'.format(os.path.dirname(__file__)))
 
     args = parse.parse_args()
+    assert type(args.M_predict) is list and type(args.M_GT) is list and len(args.M_predict) == len(
+        args.M_GT), 'The input data M_predict and M_GT must be lists of the same length.'
 
     main(args)
 
