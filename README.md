@@ -4,9 +4,9 @@
  * @Date: 2022-02-08 23:33:52
  * @Motto: Entities should not be multiplied unnecessarily.
  * @LastEditors: Shuangchi He
- * @LastEditTime: 2022-02-11 23:33:21
+ * @LastEditTime: 2022-02-11 23:37:17
  * @FilePath: /Correlation_and_Agreement_Analysis/README.md
- * @Description: Init from https://github.com/Yulv-git/Correlation_and_Agreement_Analysisc
+ * @Description: repo. https://github.com/Yulv-git/Correlation_and_Agreement_Analysis
 -->
 
 # Statistical Analysis for Correlation and Agreement
