@@ -6,7 +6,7 @@ Email: yulvchi@qq.com
 Date: 2022-02-11 14:55:18
 Motto: Entities should not be multiplied unnecessarily.
 LastEditors: Shuangchi He
-LastEditTime: 2022-02-11 22:42:23
+LastEditTime: 2022-02-12 12:20:20
 FilePath: /Correlation_and_Agreement_Analysis/Python/Correlation_Agreement.py
 Description: Statistical Analysis for Pearson Correlation and Bland-Altman Agreement
 '''
@@ -39,6 +39,8 @@ def linear_fit(x, y):
 def plot_Pearson_Correlation(X, Y, linefit_TF=False, hist_TF=False,
                              xlabel="Measurement_predict", ylabel="Measurement_GT", title="Pearson Correlation",
                              savedir='{}/Measurement_Pearson_Correlation.png'.format(os.path.dirname(__file__))):
+    print('Measurement_predict:\n{}\nMeasurement_GT:\n{}\nNum:{}'.format(X, Y, len(X)))
+
     plt.gcf().set_facecolor(np.ones(3) * 240 / 255)
     fig, ax1 = pl.subplots()
     ax1.scatter(X, Y, s=8, facecolors='none', edgecolors='r', label='Num : %d' % len(X), linewidth=1)
@@ -49,6 +51,7 @@ def plot_Pearson_Correlation(X, Y, linefit_TF=False, hist_TF=False,
         a, b, r = linear_fit(X, Y)  # Linear fit.
         ax1.plot(X, a * X + b, 'b--', label="linear_fit : y = %8.5f x + %8.5f ,\npearson coefficient : %8.5f" %
                  (a, b, r), alpha=0.4)
+        print('linear_fit: y = {} x + {}\npearson coefficient: {}\n'.format(a, b, r))
 
     ax1.set_xlabel(xlabel)
     ax1.set_ylabel(ylabel)
@@ -73,6 +76,8 @@ def plot_Bland_Altman_Agreement(X, Y, linefit_TF=False,
     mean_diff = np.mean(data_diff)  # Mean of difference between two measurements.
     std_diff = np.std(data_diff, ddof=1)  # Std deviation of difference between two measurements.
     # Python np.std divides by N by default. Set ddof=1 to divide by N-1.
+    print('data_mean: {}\ndata_diff: {}\nDiff num: {}\nMean_Diff: {}\nStd_Diff: {}\n+1.96 Std_Diff: {}\n-1.96 Std_Diff: -{}'.format(
+        data_mean, data_diff, len(X), mean_diff, std_diff, 1.96 * std_diff, 1.96 * std_diff))
 
     plt.gcf().set_facecolor(np.ones(3) * 240 / 255)
     plt.scatter(data_mean, data_diff, s=10, facecolors='none', edgecolors='r',
@@ -89,6 +94,7 @@ def plot_Bland_Altman_Agreement(X, Y, linefit_TF=False,
         a, b, r = linear_fit(data_mean, data_diff)  # Linear fit.
         plt.plot(data_mean, data_mean * a + b, 'y--',
                  label="linear_fit : y = %8.5f x + %8.5f" % (a, b), alpha=0.5)
+        print('linear_fit: y = {} x + {}'.format(a, b))
 
     plt.legend(loc=0, ncol=1)
     plt.xlabel(xlabel)
@@ -139,6 +145,7 @@ if __name__ == "__main__":
     args = parse.parse_args()
     assert type(args.M_predict) is list and type(args.M_GT) is list and len(args.M_predict) == len(
         args.M_GT), 'The input data M_predict and M_GT must be lists of the same length.'
+    print('{}\n'.format(args))
 
     main(args)
 
