@@ -6,7 +6,7 @@ Email: yulvchi@qq.com
 Date: 2022-02-11 14:55:18
 Motto: Entities should not be multiplied unnecessarily.
 LastEditors: Shuangchi He
-LastEditTime: 2022-02-12 12:20:20
+LastEditTime: 2022-02-13 22:28:24
 FilePath: /Correlation_and_Agreement_Analysis/Python/Correlation_Agreement.py
 Description: Statistical Analysis for Pearson Correlation and Bland-Altman Agreement
 '''
@@ -45,7 +45,8 @@ def plot_Pearson_Correlation(X, Y, linefit_TF=False, hist_TF=False,
     fig, ax1 = pl.subplots()
     ax1.scatter(X, Y, s=8, facecolors='none', edgecolors='r', label='Num : %d' % len(X), linewidth=1)
 
-    ax1.plot(range(math.ceil(np.max(X)) + 1), range(math.ceil(np.max(X)) + 1), 'k--', label='Equal Line', alpha=0.35)
+    ax1.plot([np.min(np.concatenate([X, Y])), np.max(np.concatenate([X, Y]))], [
+             np.min(np.concatenate([X, Y])), np.max(np.concatenate([X, Y]))], 'k--', label='Equal Line', alpha=0.35)
 
     if linefit_TF:
         a, b, r = linear_fit(X, Y)  # Linear fit.

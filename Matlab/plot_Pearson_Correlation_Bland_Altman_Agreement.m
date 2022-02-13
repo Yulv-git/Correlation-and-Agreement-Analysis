@@ -11,7 +11,7 @@ end
 fig1 = figure;
 plot(X, Y, 'or', 'MarkerSize', 4, 'LineWidth', 1)
 hold on;
-plot(min(X):0.05:(max(X)+0.05), min(X):0.05:(max(X)+0.05), 'k--');
+plot([min(min(X), min(Y)), max(max(X), max(Y))], [min(min(X), min(Y)), max(max(X), max(Y))], 'k--');
 linear_fit = polyfit(X, Y, 1);  % Linear fit.
 r = corr(X, Y);
 plot(X, X .* linear_fit(1) + linear_fit(2), 'b--');
