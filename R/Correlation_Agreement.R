@@ -31,9 +31,9 @@ Pearson_Correlation_Bland_Altman_Agreement <- function(X, Y){
     plot(data_mean, data_diff, ylim=c(min(- 1.96 * std_diff, min(data_diff)), max(+ 1.96 * std_diff, max(data_diff))), type='p',
         xlab='Mean of Measurement_predict and Measurement_GT (mm)', ylab='Diff between Measurement_predict and Measurement_GT (mm)',
         col='red', main='Bland-Altman Agreement')
-    lines(data_mean, mean_diff * rep(1, times=data_Num), col='black', type='l', lty=2)
-    lines(data_mean, (mean_diff + 1.96 * std_diff) * rep(1, times=data_Num), col='blue', type='l', lty=1)
-    lines(data_mean, (mean_diff - 1.96 * std_diff) * rep(1, times=data_Num), col='blue', type='l', lty=2)
+    lines(sort(data_mean), sort(mean_diff * rep(1, times=data_Num)), col='black', type='l', lty=2)
+    lines(sort(data_mean), sort((mean_diff + 1.96 * std_diff) * rep(1, times=data_Num)), col='blue', type='l', lty=1)
+    lines(sort(data_mean), sort((mean_diff - 1.96 * std_diff) * rep(1, times=data_Num)), col='blue', type='l', lty=2)
 
     line2.model <- lm(data_diff~data_mean)
     b2 = line2.model$coefficients[[1]]
@@ -42,8 +42,10 @@ Pearson_Correlation_Bland_Altman_Agreement <- function(X, Y){
     clip(min(data_mean), max(data_mean), min(data_diff), max(data_diff) + (max(data_diff) - min(data_diff)) / 6)
     abline(line2.model, lwd=1, col="yellow", lty=2)
 
-    legend('top', c(paste("Num:", data_Num), paste("Mean_Diff:", round(mean_diff, 3)), paste("+1.96 Std_Diff:", round(1.96 * std_diff, 3)),
-        paste("-1.96 Std_Diff:", round(-1.96 * std_diff, 3)), paste("linear_fit: y =", round(k2, 5), "x +", round(b2, 5))),
+    legend('top', c(paste("Num:", data_Num), paste("Mean_Diff:", round(mean_diff, 3)),
+        paste("Mean_Diff + 1.96 Std_Diff:", round(mean_diff + 1.96 * std_diff, 3)),
+        paste("Mean_Diff - 1.96 Std_Diff:", round(mean_diff - 1.96 * std_diff, 3)),
+        paste("linear_fit: y =", round(k2, 5), "x +", round(b2, 5))),
         col=c("red", "black", "blue", "blue", "yellow"), pch=c('o', '', '', '', ''), lty=c(0, 2, 1, 2, 2), bty="n")
 }
 
