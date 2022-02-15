@@ -131,3 +131,4 @@ dmypy.json
 # plot
 */Matlab/*.png
 */R/*.png
+*/Julia/*.png
