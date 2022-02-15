@@ -37,7 +37,7 @@ Rscript ./R/Correlation_Agreement.R
 * Julia
 
 ``` bash
-julia Correlation_Agreement.jl
+julia ./Julia/Correlation_Agreement.jl
 ```
 
 ## Correlation
