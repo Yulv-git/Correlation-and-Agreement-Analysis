@@ -4,7 +4,7 @@
  * @Date: 2022-02-08 23:33:52
  * @Motto: Entities should not be multiplied unnecessarily.
  * @LastEditors: Shuangchi He
- * @LastEditTime: 2022-02-14 20:47:58
+ * @LastEditTime: 2022-02-15 12:30:05
  * @FilePath: /Correlation_and_Agreement_Analysis/README.md
  * @Description: repo. https://github.com/Yulv-git/Correlation_and_Agreement_Analysis
 -->
@@ -32,6 +32,12 @@ plot_Pearson_Correlation_Bland_Altman_Agreement([0.125, 0.95, 0.55, 0.60, 0.78, 
 
 ``` bash
 Rscript ./R/Correlation_Agreement.R
+```
+
+* Julia
+
+``` bash
+julia Correlation_Agreement.jl
 ```
 
 ## Correlation
