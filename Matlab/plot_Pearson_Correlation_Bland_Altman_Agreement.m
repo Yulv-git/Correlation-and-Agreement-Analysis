@@ -14,7 +14,7 @@ hold on;
 plot([min(min(X), min(Y)), max(max(X), max(Y))], [min(min(X), min(Y)), max(max(X), max(Y))], 'k--');
 linear_fit = polyfit(X, Y, 1);  % Linear fit.
 r = corr(X, Y);
-plot(X, X .* linear_fit(1) + linear_fit(2), 'b--');
+plot(sort(X), sort(X .* linear_fit(1) + linear_fit(2)), 'b--');
 
 legend(strcat('Num: ', num2str(length(X))),...
     'Equal Line',...
@@ -37,17 +37,17 @@ std_diff = std(data_diff);  % Std deviation of difference between two measuremen
 fig2 = figure;
 plot(data_mean, data_diff, 'or', 'MarkerSize', 4, 'LineWidth', 1)
 hold on;
-plot(data_mean, mean_diff * ones(1, length(data_mean)), 'k--');  % Mean difference line.
-plot(data_mean, (mean_diff + 1.96 * std_diff) * ones(1, length(data_mean)), 'b--');  % Mean plus 1.96*Std_Diff line.
-plot(data_mean, (mean_diff - 1.96 * std_diff) * ones(1, length(data_mean)), 'b-.');  % Mean minus 1.96*Std_Diff line.
+plot(sort(data_mean), sort(mean_diff * ones(1, length(data_mean))), 'k--');  % Mean difference line.
+plot(sort(data_mean), sort((mean_diff + 1.96 * std_diff) * ones(1, length(data_mean))), 'b--');  % Mean plus 1.96*Std_Diff line.
+plot(sort(data_mean), sort((mean_diff - 1.96 * std_diff) * ones(1, length(data_mean))), 'b-.');  % Mean minus 1.96*Std_Diff line.
 
 linear_fit = polyfit(data_mean, data_diff, 1);  % Linear fit.
 plot(data_mean, data_mean .* linear_fit(1) + linear_fit(2), 'y--');
 
 legend(strcat('Diff num: ', num2str(length(X))),...
     strcat('Mean_Diff: ', num2str(mean_diff, '%5.3f')),...
-    strcat('+1.96 Std_Diff: ', num2str(1.96 * std_diff, '%5.3f')),...
-    strcat('-1.96 Std_Diff: ', num2str(-1.96 * std_diff, '%5.3f')),...
+    strcat('Mean_Diff + 1.96 Std_Diff: ', num2str(mean_diff + 1.96 * std_diff, '%5.3f')),...
+    strcat('Mean_Diff - 1.96 Std_Diff: ', num2str(mean_diff - 1.96 * std_diff, '%5.3f')),...
     ['linear_fit:y=', num2str(linear_fit(1), '%8.5f'), 'x+', num2str(linear_fit(2), '%8.5f')],...
     'Interpreter', 'none');
 grid off;
