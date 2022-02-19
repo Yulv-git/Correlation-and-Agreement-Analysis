@@ -4,7 +4,7 @@
  * @Date: 2022-02-08 23:33:52
  * @Motto: Entities should not be multiplied unnecessarily.
  * @LastEditors: Shuangchi He
- * @LastEditTime: 2022-02-19 11:32:04
+ * @LastEditTime: 2022-02-19 11:42:17
  * @FilePath: /Correlation_and_Agreement_Analysis/README.md
  * @Description: repo. https://github.com/Yulv-git/Correlation_and_Agreement_Analysis
 -->
@@ -37,7 +37,7 @@ Rscript ./R/Correlation_Agreement.R
 * Julia
 
 ``` bash
-julia ./Juila/Correlation_Agreement.jl
+julia ./Julia/Correlation_Agreement.jl
 ```
 
 ## Correlation
