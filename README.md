@@ -4,7 +4,7 @@
  * @Date: 2022-02-08 23:33:52
  * @Motto: Entities should not be multiplied unnecessarily.
  * @LastEditors: Shuangchi He
- * @LastEditTime: 2022-02-15 12:30:05
+ * @LastEditTime: 2022-02-19 11:32:04
  * @FilePath: /Correlation_and_Agreement_Analysis/README.md
  * @Description: repo. https://github.com/Yulv-git/Correlation_and_Agreement_Analysis
 -->
@@ -37,7 +37,7 @@ Rscript ./R/Correlation_Agreement.R
 * Julia
 
 ``` bash
-julia Correlation_Agreement.jl
+julia ./Juila/Correlation_Agreement.jl
 ```
 
 ## Correlation
@@ -54,4 +54,10 @@ Agreement (Bland-Altman Agreement) test is a measure of the mean and variance of
 
 ![Measurement_Bland-Altman_Agreement](./Python/Measurement_Bland-Altman_Agreement.png)
 
-Assuming that the difference between Measurement_predict and Measurement_GT conforms to a normal distribution, the difference between the two measurement methods is distributed within a confidence interval of 0.001±0.047 (mm) with 95% confidence. That is, it can be considered that the two measurement methods, Measurement_predict and Measurement_GT, have good Agreement.
+Assuming that the difference between Measurement_predict and Measurement_GT conforms to a normal distribution, the difference between the two measurement methods is distributed within a confidence interval of 0.00145 ± 0.04668 (mm) with 95% confidence. That is, it can be considered that the two measurement methods, Measurement_predict and Measurement_GT, have good Agreement.
+
+---
+
+<font size=4><b><big> Contributing </b></big></font>
+
+If you find any errors, or have any suggestions, please feel free to please feel free to pull requests.

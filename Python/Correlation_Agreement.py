@@ -6,7 +6,7 @@ Email: yulvchi@qq.com
 Date: 2022-02-11 14:55:18
 Motto: Entities should not be multiplied unnecessarily.
 LastEditors: Shuangchi He
-LastEditTime: 2022-02-15 12:28:37
+LastEditTime: 2022-02-19 11:24:40
 FilePath: /Correlation_and_Agreement_Analysis/Python/Correlation_Agreement.py
 Description: Statistical Analysis for Pearson Correlation and Bland-Altman Agreement
 '''
@@ -50,7 +50,7 @@ def plot_Pearson_Correlation(X, Y, linefit_TF=False, hist_TF=False,
 
     if linefit_TF:
         a, b, r = linear_fit(X, Y)  # Linear fit.
-        ax1.plot(sort(X), sort(a * X + b), 'b--', label="linear_fit : y = %8.5f x + %8.5f ,\npearson coefficient : %8.5f" %
+        ax1.plot(sort(X), sort(a * X + b), 'b--', label="linear_fit : y = %.5f x + %.5f ,\npearson coefficient : %.5f" %
                  (a, b, r), alpha=0.4)
         print('linear_fit: y = {} x + {}\npearson coefficient: {}\n'.format(a, b, r))
 
@@ -85,16 +85,16 @@ def plot_Bland_Altman_Agreement(X, Y, linefit_TF=False,
                 label='Diff  num : %d' % len(X), linewidth=1)
 
     plt.plot(sort(data_mean), sort(mean_diff * np.ones((len(data_mean), 1), dtype=np.uint8)), 'k--',
-             label='Mean_Diff : %5.3f' % mean_diff, alpha=0.5)  # Mean difference line.
+             label='Mean_Diff : %.5f' % mean_diff, alpha=0.5)  # Mean difference line.
     plt.plot(sort(data_mean), sort((mean_diff + 1.96 * std_diff) * np.ones((len(data_mean), 1), dtype=np.uint8)), 'b--',
-             label='Mean_Diff + 1.96 Std_Diff : %5.3f' % (mean_diff + 1.96 * std_diff), alpha=0.5)  # Mean plus 1.96*Std_Diff line.
+             label='Mean_Diff + 1.96 Std_Diff : %.5f' % (mean_diff + 1.96 * std_diff), alpha=0.5)  # Mean plus 1.96*Std_Diff line.
     plt.plot(sort(data_mean), sort((mean_diff - 1.96 * std_diff) * np.ones((len(data_mean), 1), dtype=np.uint8)), 'b-.',
-             label='Mean_Diff - 1.96 Std_Diff : %5.3f' % (mean_diff - 1.96 * std_diff), alpha=0.5)  # Mean minus 1.96*Std_Diff line.
+             label='Mean_Diff - 1.96 Std_Diff : %.5f' % (mean_diff - 1.96 * std_diff), alpha=0.5)  # Mean minus 1.96*Std_Diff line.
 
     if linefit_TF:
         a, b, r = linear_fit(data_mean, data_diff)  # Linear fit.
         plt.plot(sort(data_mean), sort(data_mean * a + b), 'y--',
-                 label="linear_fit : y = %8.5f x + %8.5f" % (a, b), alpha=0.5)
+                 label="linear_fit : y = %.5f x + %.5f" % (a, b), alpha=0.5)
         print('linear_fit: y = {} x + {}'.format(a, b))
 
     plt.legend(loc=0, ncol=1)

@@ -35,11 +35,11 @@ function Pearson_Correlation_Bland_Altman_Agreement(X, Y)
 
     scatter(data_mean, data_diff, label="Diff num: $(length(data_mean))", color="r", s=8)
     plot(sort(data_mean), sort(mean_diff * ones(length(data_mean))), color="k", linestyle="--",
-        label="Mean_Diff: $(round(mean_diff, digits=3))")
+        label="Mean_Diff: $(round(mean_diff, digits=5))")
     plot(sort(data_mean), sort((mean_diff .+ 1.96 * std_diff) * ones(length(data_mean))), color="b", linestyle="--",
-        label="Mean_Diff + 1.96 Std_Diff: $(round(mean_diff + 1.96 * std_diff, digits=3))")
+        label="Mean_Diff + 1.96 Std_Diff: $(round(mean_diff + 1.96 * std_diff, digits=5))")
     plot(sort(data_mean), sort((mean_diff .- 1.96 * std_diff) * ones(length(data_mean))), color="b", linestyle="-.",
-        label="Mean_Diff - 1.96 Std_Diff: $(round(mean_diff - 1.96 * std_diff, digits=3))")
+        label="Mean_Diff - 1.96 Std_Diff: $(round(mean_diff - 1.96 * std_diff, digits=5))")
     plot(sort(data_mean), sort(data_mean * k2 .+ b2), color="y", linestyle="--",
         label="linear_fit: y = $(round(k2, digits=5)) x + $(round(b2, digits=5))")
 
