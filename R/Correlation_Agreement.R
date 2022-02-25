@@ -1,4 +1,10 @@
-# Statistical Analysis for Pearson Correlation and Bland-Altman Agreement
+# Author: Shuangchi He / Yulv
+# Email: yulvchi@qq.com
+# Date: 2022-02-14 8:48:50
+# LastEditors: Shuangchi He
+# LastEditTime: 2022-02-25 21:54:37
+# Description: Statistical Analysis for Pearson Correlation and Bland-Altman Agreement
+
 Pearson_Correlation_Bland_Altman_Agreement <- function(X, Y){
     # Pearson Correlation
     XY_min = min(min(X), min(Y))
@@ -10,7 +16,7 @@ Pearson_Correlation_Bland_Altman_Agreement <- function(X, Y){
     plot(X, Y, type='p', xlab='Measurement_predict (mm)', ylab='Measurement_GT (mm)', col='red', main='Pearson Correlation')
     lines(c(XY_min, XY_max), c(XY_min, XY_max), col='black', lty=2)
 
-    line.model <- lm(Y~X)
+    line.model <- lm(Y~X)  # Linear regression analysis.
     b = line.model$coefficients[[1]]
     k = line.model$coefficients[[2]]
 
@@ -25,7 +31,7 @@ Pearson_Correlation_Bland_Altman_Agreement <- function(X, Y){
     data_mean = (X + Y) /2
     data_diff = X - Y
     mean_diff = mean(data_diff)
-    std_diff = sd(data_diff)
+    std_diff = sd(data_diff)  # R sd defaults to correcting for bias in sample variance by dividing by N-1.
 
     png('Measurement_Bland-Altman_Agreement.png')
     plot(data_mean, data_diff, ylim=c(min(- 1.96 * std_diff, min(data_diff)), max(+ 1.96 * std_diff, max(data_diff))), type='p',
@@ -35,7 +41,7 @@ Pearson_Correlation_Bland_Altman_Agreement <- function(X, Y){
     lines(sort(data_mean), sort((mean_diff + 1.96 * std_diff) * rep(1, times=data_Num)), col='blue', type='l', lty=1)
     lines(sort(data_mean), sort((mean_diff - 1.96 * std_diff) * rep(1, times=data_Num)), col='blue', type='l', lty=2)
 
-    line2.model <- lm(data_diff~data_mean)
+    line2.model <- lm(data_diff~data_mean)  # Linear regression analysis.
     b2 = line2.model$coefficients[[1]]
     k2 = line2.model$coefficients[[2]]
 

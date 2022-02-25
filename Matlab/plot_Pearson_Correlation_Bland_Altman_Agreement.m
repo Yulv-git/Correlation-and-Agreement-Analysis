@@ -1,3 +1,12 @@
+%{
+Author: Shuangchi He / Yulv
+Email: yulvchi@qq.com
+Date: 2022-02-11 11:39:39
+LastEditors: Shuangchi He
+LastEditTime: 2022-02-25 21:43:52
+Description: Statistical Analysis for Pearson Correlation and Bland-Altman Agreement
+%}
+
 function plot_Pearson_Correlation_Bland_Altman_Agreement(X, Y)
 if(size(X)~=size(Y) & (isrow(X) | iscolumn(X)))
     error('The input data X and Y must be one-dimensional matrices of the same size.');

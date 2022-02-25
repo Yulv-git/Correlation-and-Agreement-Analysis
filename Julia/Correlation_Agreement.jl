@@ -1,4 +1,11 @@
-# Statistical Analysis for Pearson Correlation and Bland-Altman Agreement
+#=
+Author: Shuangchi He / Yulv
+Email: yulvchi@qq.com
+Date: 2022-02-15 12:32:43
+LastEditors: Shuangchi He
+LastEditTime: 2022-02-25 21:45:58
+Description: Statistical Analysis for Pearson Correlation and Bland-Altman Agreement
+=#
 using Polynomials
 using PyPlot
 using Statistics
@@ -6,7 +13,7 @@ using Statistics
 
 function Pearson_Correlation_Bland_Altman_Agreement(X, Y)
     # Pearson Correlation
-    linearfit=fit(X, Y, 1)
+    linearfit=fit(X, Y, 1)  # Linear fit.
     k = linearfit[1]
     b = linearfit[0]
 
@@ -27,9 +34,9 @@ function Pearson_Correlation_Bland_Altman_Agreement(X, Y)
     data_mean = (X + Y) / 2.
     data_diff = X - Y
     mean_diff = mean(data_diff)
-    std_diff = std(data_diff)
+    std_diff = std(data_diff)  # Julia std defaults to correcting for bias in sample variance by dividing by N-1.
 
-    linearfit2=fit(data_mean, data_diff, 1)
+    linearfit2=fit(data_mean, data_diff, 1)  # Linear fit.
     k2 = linearfit2[1]
     b2 = linearfit2[0]
 
