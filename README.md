@@ -4,7 +4,7 @@
  * @Date: 2022-02-08 23:33:52
  * @Motto: Entities should not be multiplied unnecessarily.
  * @LastEditors: Shuangchi He
- * @LastEditTime: 2022-04-11 12:19:03
+ * @LastEditTime: 2022-06-18 15:38:23
  * @FilePath: /Correlation_and_Agreement_Analysis/README.md
  * @Description: repo. https://github.com/Yulv-git/Correlation_and_Agreement_Analysis
 -->
@@ -74,4 +74,4 @@ Assuming that the difference between Measurement_predict and Measurement_GT conf
 
 <font size=4><b><big> Contributing </b></big></font>
 
-If you find any errors, or have any suggestions, please feel free to please feel free to pull requests.
+If you have any suggestions or improvements, please feel free to create issues or pull requests.
