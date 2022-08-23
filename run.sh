@@ -6,7 +6,7 @@
  # @LastEditors: Shuangchi He
  # @LastEditTime: 2022-04-06 18:35:29
  # @FilePath: /Correlation_and_Agreement_Analysis/run.sh
- # @Description: Modify here please
+ # @Description: Statistical Analysis for Pearson Correlation and Bland-Altman Agreement with Python, R, Julia and Matlab
 ### 
 
 ## Python
